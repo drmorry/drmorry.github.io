@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Code Question Page</title>
+  <title>Kode til kode</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 40px; }
     .hidden { display: none; }
@@ -10,24 +10,24 @@
 </head>
 <body>
 
-<h1>Enter Your Code</h1>
+<h1>Legg inn kode</h1>
 
 <div id="step1">
-  <input id="codeInput" type="text" maxlength="2" placeholder="Two-digit code">
-  <button onclick="submitCode()">Submit</button>
+  <input id="codeInput" type="text" maxlength="3" placeholder="3-sifret kode">
+  <button onclick="submitCode()">Registrer</button>
   <p id="codeError" style="color:red;"></p>
 </div>
 
 <div id="step2" class="hidden">
   <h2 id="questionText"></h2>
-  <input id="answerInput" type="text" placeholder="Your answer">
-  <button onclick="submitAnswer()">Submit Answer</button>
+  <input id="answerInput" type="text" placeholder="Ditt svar">
+  <button onclick="submitAnswer()">Registrer</button>
   <p id="answerError" style="color:red;"></p>
 </div>
 
 <div id="step3" class="hidden">
-  <h2>Correct!</h2>
-  <p>Your result: <span id="resultDigits"></span></p>
+  <h2>Korrekt!</h2>
+  <p>Kode til cryptex: <span id="resultDigits"></span></p>
 </div>
 
 <script>
@@ -37,7 +37,7 @@ const QUIZ_DATA = {
   "127": {
     question: "Hva er det 36. ordet på side 2 i VKMs strategidokument i PDF-format som er publisert på nettsidene?",
     answer: "integritet",
-    result: "34"
+    result: "x = c + # , y = a + # , z = d + # , w = b - #"
   },
   "227": {
     question: "What color is the sky on a clear day?",
@@ -63,7 +63,7 @@ function submitCode() {
   const code = document.getElementById("codeInput").value.trim();
 
   if (!QUIZ_DATA[code]) {
-    document.getElementById("codeError").textContent = "Invalid code.";
+    document.getElementById("codeError").textContent = "Ugyldig kode.";
     return;
   }
 
@@ -82,7 +82,7 @@ function submitAnswer() {
   const correctAnswer = QUIZ_DATA[currentCode].answer.toLowerCase();
 
   if (userAnswer !== correctAnswer) {
-    document.getElementById("answerError").textContent = "Incorrect answer, try again.";
+    document.getElementById("answerError").textContent = "Feil svar. Prøv igjen.";
     return;
   }
 
