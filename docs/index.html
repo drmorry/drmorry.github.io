@@ -10,85 +10,11 @@
 </head>
 <body>
 
-<h1>Enter Your Code</h1>
+<h1>Nesten...</h1>
 
 <div id="step1">
-  <input id="codeInput" type="text" maxlength="2" placeholder="Two-digit code">
-  <button onclick="submitCode()">Submit</button>
-  <p id="codeError" style="color:red;"></p>
+  <p id="urlError" style="color:red;">Du mangler en del av lenken (3 bokstaver). Prøv igjen.</p>
 </div>
-
-<div id="step2" class="hidden">
-  <h2 id="questionText"></h2>
-  <input id="answerInput" type="text" placeholder="Your answer">
-  <button onclick="submitAnswer()">Submit Answer</button>
-  <p id="answerError" style="color:red;"></p>
-</div>
-
-<div id="step3" class="hidden">
-  <h2>Correct!</h2>
-  <p>Your result: <span id="resultDigits"></span></p>
-</div>
-
-<script>
-// 1️⃣ Define your code → question → answer → result mapping
-// You can add as many as you want.
-const QUIZ_DATA = {
-  "12": {
-    question: "What is 5 + 7?",
-    answer: "12",
-    result: "34"
-  },
-  "45": {
-    question: "What color is the sky on a clear day?",
-    answer: "blue",
-    result: "89"
-  },
-  "99": {
-    question: "What is the capital of France?",
-    answer: "paris",
-    result: "17"
-  }
-};
-
-let currentCode = null;
-
-// 2️⃣ Step 1: User enters the two-digit code
-function submitCode() {
-  const code = document.getElementById("codeInput").value.trim();
-
-  if (!QUIZ_DATA[code]) {
-    document.getElementById("codeError").textContent = "Invalid code.";
-    return;
-  }
-
-  currentCode = code;
-  document.getElementById("codeError").textContent = "";
-
-  // Show question
-  document.getElementById("questionText").textContent = QUIZ_DATA[code].question;
-  document.getElementById("step1").classList.add("hidden");
-  document.getElementById("step2").classList.remove("hidden");
-}
-
-// 3️⃣ Step 2: User answers the question
-function submitAnswer() {
-  const userAnswer = document.getElementById("answerInput").value.trim().toLowerCase();
-  const correctAnswer = QUIZ_DATA[currentCode].answer.toLowerCase();
-
-  if (userAnswer !== correctAnswer) {
-    document.getElementById("answerError").textContent = "Incorrect answer, try again.";
-    return;
-  }
-
-  document.getElementById("answerError").textContent = "";
-
-  // Show final result
-  document.getElementById("resultDigits").textContent = QUIZ_DATA[currentCode].result;
-  document.getElementById("step2").classList.add("hidden");
-  document.getElementById("step3").classList.remove("hidden");
-}
-</script>
 
 </body>
 </html>
